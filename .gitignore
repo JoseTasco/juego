@@ -1,0 +1,51 @@
+# =====================================================
+#  Ashen Crown — .gitignore
+#  Coloca este archivo en la raíz del proyecto:
+#  Proyecto_AshenCrown/.gitignore
+# =====================================================
+
+# ── Backend Java / Maven ───────────────────────────
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+backend/**/*.class
+backend/**/*.jar
+backend/**/*.war
+*.iml
+.idea/
+*.ipr
+*.iws
+
+# ── Contraseñas y configuración sensible ───────────
+# IMPORTANTE: nunca subas application.properties con tu contraseña real
+# Renómbralo a application.properties.example antes de subir
+backend/src/main/resources/application.properties
+
+# ── Frontend Node.js ───────────────────────────────
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/*.local
+
+# ── Variables de entorno ───────────────────────────
+.env
+.env.local
+.env.development
+.env.production
+**/.env
+
+# ── Logs ───────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Sistema operativo ──────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── VSCode ─────────────────────────────────────────
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+# Mantener .vscode/tasks.json si lo usas para compartir configuración

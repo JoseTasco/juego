@@ -1,0 +1,20 @@
+server.port=8080
+
+# ── PostgreSQL ──────────────────────────────────────────────────
+# Copia este archivo como application.properties y llena tus datos
+spring.datasource.url=jdbc:postgresql://localhost:5432/ashen_crown
+spring.datasource.username=postgres
+spring.datasource.password=TU_PASSWORD_AQUI
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# ── JPA ─────────────────────────────────────────────────────────
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.properties.hibernate.format_sql=true
+
+# ── CORS ────────────────────────────────────────────────────────
+spring.web.cors.allowed-origins=http://localhost:5173,http://localhost:3000
+
+# ── Logs ────────────────────────────────────────────────────────
+logging.level.com.ashencrown=DEBUG
