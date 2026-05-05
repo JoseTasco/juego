@@ -45,6 +45,9 @@ public class AuthService {
     }
 
     public AuthResponseDto updateLanguage(Long userId, String language) {
+        if (userId == null)
+            return AuthResponseDto.error("ID de usuario inválido.");
+        
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado."));
         if (!language.equals("es") && !language.equals("en"))
