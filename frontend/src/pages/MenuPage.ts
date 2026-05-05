@@ -1,5 +1,6 @@
 import { t, setIdioma, getIdioma } from '../i18n/i18n';
 import { AuthService } from '../services/AuthService';
+import { AudioManager, TRACKS } from '../services/AudioManager';
 
 export class MenuPage {
 
@@ -9,15 +10,20 @@ export class MenuPage {
       import('./LoginPage').then(({ LoginPage }) => new LoginPage().render(container));
       return;
     }
+    AudioManager.playMusic(TRACKS.menu);
     container.innerHTML = this.getHTML(sesion.username, sesion.hasSavedGame);
     this.agregarEventos(container, sesion);
   }
 
   private getHTML(username: string, hasSavedGame: boolean): string {
     return `
-      <main class="menu-main">
+      <main class="menu-main" style="position:relative;overflow:hidden;">
+        <video autoplay muted loop playsinline
+               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.18;pointer-events:none;z-index:0;">
+          <source src="/src/assets/Movies/Brave_OP.mp4" type="video/mp4">
+        </video>
         <div class="menu-bg-lineas"></div>
-        <div class="menu-contenido">
+        <div class="menu-contenido" style="position:relative;z-index:1;">
           <div class="menu-header">
             <div class="menu-emblema">✦</div>
             <h1 class="menu-titulo">Ashen Crown</h1>
@@ -72,8 +78,8 @@ export class MenuPage {
     if (!sesion) return;
 
     container.querySelector('#btn-empezar')?.addEventListener('click', () => {
-      import('./GamePage').then(({ GamePage }) => {
-        new GamePage().render(document.getElementById('app')!);
+      import('./CampaignPage').then(({ CampaignPage }) => {
+        new CampaignPage().render(document.getElementById('app')!);
       });
     });
 

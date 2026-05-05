@@ -23,19 +23,22 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    // GET /api/game/state — estado completo del juego
+    // GET /api/game/state
     @GetMapping("/state")
     public ResponseEntity<GameState> getState() {
         return ResponseEntity.ok(gameService.getGameState());
     }
 
-    // POST /api/game/new — nueva partida
+    // POST /api/game/new
     @PostMapping("/new")
-    public ResponseEntity<GameState> newGame() {
+    public ResponseEntity<GameState> newGame(@RequestParam(required = false) String levelId) {
+        if (levelId != null && !levelId.isEmpty()) {
+            return ResponseEntity.ok(gameService.createGameFromLevel(levelId));
+        }
         return ResponseEntity.ok(gameService.createNewGame());
     }
 
-    // GET /api/game/reachable/{unitId} — casillas alcanzables (BFS)
+    // GET /api/game/reachable/{unitId}
     @GetMapping("/reachable/{unitId}")
     public ResponseEntity<?> getReachableTiles(@PathVariable String unitId) {
         try {
@@ -46,8 +49,18 @@ public class GameController {
         }
     }
 
-    // POST /api/game/move — mover unidad
-    // Body: { "unitId": "marth", "destX": 3, "destY": 2 }
+    // GET /api/game/preview?attackerId=X&defenderId=Y
+    @GetMapping("/preview")
+    public ResponseEntity<?> previewCombat(@RequestParam String attackerId,
+                                           @RequestParam String defenderId) {
+        try {
+            return ResponseEntity.ok(gameService.getCombatPreview(attackerId, defenderId));
+        } catch (IllegalArgumentException | IllegalStateException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    // POST /api/game/move
     @PostMapping("/move")
     public ResponseEntity<?> moveUnit(@RequestBody MoveRequestDto request) {
         try {
@@ -58,8 +71,7 @@ public class GameController {
         }
     }
 
-    // POST /api/game/attack — atacar unidad enemiga
-    // Body: { "attackerId": "marth", "defenderId": "goblin1" }
+    // POST /api/game/attack
     @PostMapping("/attack")
     public ResponseEntity<?> attackUnit(@RequestBody AttackRequestDto request) {
         try {
@@ -70,7 +82,7 @@ public class GameController {
         }
     }
 
-    // POST /api/game/wait/{unitId} — unidad espera
+    // POST /api/game/wait/{unitId}
     @PostMapping("/wait/{unitId}")
     public ResponseEntity<?> waitUnit(@PathVariable String unitId) {
         try {
@@ -81,9 +93,9 @@ public class GameController {
         }
     }
 
-    // POST /api/game/end-turn — fin de turno del jugador
+    // POST /api/game/end-turn  →  retorna acciones IA + estado final
     @PostMapping("/end-turn")
-    public ResponseEntity<GameState> endTurn() {
+    public ResponseEntity<EnemyTurnResultDto> endTurn() {
         return ResponseEntity.ok(gameService.endPlayerTurn());
     }
 }
