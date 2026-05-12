@@ -25,9 +25,14 @@ export const AuthService = {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password }),
       });
+      if (!res.ok) {
+        const data = await res.json();
+        return data;
+      }
       return await res.json();
-    } catch {
-      return { success: false, message: 'error.red' };
+    } catch (error) {
+      console.error('Error de conexión:', error);
+      return { success: false, message: 'Error de conexión al servidor. ¿Está corriendo en http://localhost:8080?' };
     }
   },
 
@@ -38,9 +43,14 @@ export const AuthService = {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
       });
+      if (!res.ok) {
+        const data = await res.json();
+        return data;
+      }
       return await res.json();
-    } catch {
-      return { success: false, message: 'error.red' };
+    } catch (error) {
+      console.error('Error de conexión:', error);
+      return { success: false, message: 'Error de conexión al servidor. ¿Está corriendo en http://localhost:8080?' };
     }
   },
 
@@ -51,9 +61,14 @@ export const AuthService = {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ language }),
       });
+      if (!res.ok) {
+        const data = await res.json();
+        return data;
+      }
       return await res.json();
-    } catch {
-      return { success: false, message: 'error.red' };
+    } catch (error) {
+      console.error('Error de conexión:', error);
+      return { success: false, message: 'Error de conexión al servidor.' };
     }
   },
 
