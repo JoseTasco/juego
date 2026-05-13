@@ -1,5 +1,6 @@
-const BASE_URL   = 'http://localhost:8080/api/game';
-const LEVEL_URL  = 'http://localhost:8080/api/levels';
+const API_BASE   = import.meta.env.VITE_API_URL ?? 'http://localhost:8080';
+const BASE_URL   = `${API_BASE}/api/game`;
+const LEVEL_URL  = `${API_BASE}/api/levels`;
 
 // ── Modelos ────────────────────────────────────────────────────────────────────
 export interface Position { x: number; y: number; }

@@ -1,0 +1,82 @@
+# CODEOWNERS — Ashen Crown
+# Reemplaza @DevSebastian y @DevFelipe con los usernames reales de GitHub
+
+# ── Raíz / DevOps → Felipe ─────────────────────────────────────────────────────
+/.github/                                                         @DevFelipe
+/render.yaml                                                      @DevFelipe
+/frontend/vercel.json                                             @DevFelipe
+/frontend/vite.config.ts                                          @DevFelipe
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TASCO — Motor de juego (Backend + Frontend)
+# ══════════════════════════════════════════════════════════════════════════════
+/backend/src/main/java/com/ashencrown/controller/GameController.java   @JoseTasco
+/backend/src/main/java/com/ashencrown/service/GameService.java         @JoseTasco
+/backend/src/main/java/com/ashencrown/service/CombatService.java       @JoseTasco
+/backend/src/main/java/com/ashencrown/service/AIService.java           @JoseTasco
+/backend/src/main/java/com/ashencrown/service/MovementService.java     @JoseTasco
+/backend/src/main/java/com/ashencrown/service/PathfindingService.java  @JoseTasco
+/backend/src/main/java/com/ashencrown/service/ExperienceService.java   @JoseTasco
+/backend/src/main/java/com/ashencrown/model/GameState.java             @JoseTasco
+/backend/src/main/java/com/ashencrown/model/GameMap.java               @JoseTasco
+/backend/src/main/java/com/ashencrown/model/Unit.java                  @JoseTasco
+/backend/src/main/java/com/ashencrown/model/Weapon.java                @JoseTasco
+/backend/src/main/java/com/ashencrown/dto/AttackRequestDto.java        @JoseTasco
+/backend/src/main/java/com/ashencrown/dto/MoveRequestDto.java          @JoseTasco
+/backend/src/main/java/com/ashencrown/dto/MoveResultDto.java           @JoseTasco
+/backend/src/main/java/com/ashencrown/dto/CombatPreviewDto.java        @JoseTasco
+/backend/src/main/java/com/ashencrown/dto/CombatResultDto.java         @JoseTasco
+/backend/src/main/java/com/ashencrown/dto/EnemyActionDto.java          @JoseTasco
+/backend/src/main/java/com/ashencrown/dto/EnemyTurnResultDto.java      @JoseTasco
+/frontend/src/pages/CampaignPage.ts                                    @JoseTasco
+/frontend/src/pages/GamePage.ts                                        @JoseTasco
+/frontend/src/services/AudioManager.ts                                 @JoseTasco
+/frontend/src/services/GameService.ts                                  @JoseTasco
+/frontend/src/styles/campaign.css                                      @JoseTasco
+/frontend/src/styles/game.css                                          @JoseTasco
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SEBASTIAN — Campaña + Visual (Backend + Frontend)
+# ══════════════════════════════════════════════════════════════════════════════
+/backend/src/main/java/com/ashencrown/controller/LevelController.java  @DevSebastian
+/backend/src/main/java/com/ashencrown/service/LevelService.java        @DevSebastian
+/backend/src/main/java/com/ashencrown/model/Campaign.java              @DevSebastian
+/backend/src/main/java/com/ashencrown/model/Level.java                 @DevSebastian
+/backend/src/main/java/com/ashencrown/model/UnitDefinition.java        @DevSebastian
+/backend/src/main/java/com/ashencrown/model/TerrainType.java           @DevSebastian
+/backend/src/main/java/com/ashencrown/model/Tile.java                  @DevSebastian
+/backend/src/main/java/com/ashencrown/model/Position.java              @DevSebastian
+/backend/src/main/java/com/ashencrown/model/WeaponType.java            @DevSebastian
+/backend/src/main/java/com/ashencrown/model/AIBehavior.java            @DevSebastian
+/backend/src/main/java/com/ashencrown/dto/CampaignDto.java             @DevSebastian
+/backend/src/main/java/com/ashencrown/dto/LevelDto.java                @DevSebastian
+/backend/src/main/java/com/ashencrown/dto/UnitDefinitionDto.java       @DevSebastian
+/frontend/src/pages/LandingPage.ts                                     @DevSebastian
+/frontend/src/pages/MenuPage.ts                                        @DevSebastian
+/frontend/src/pages/CutscenePage.ts                                    @DevSebastian
+/frontend/src/services/AssetManager.ts                                 @DevSebastian
+/frontend/src/styles/global.css                                        @DevSebastian
+/frontend/src/styles/LandingPage.css                                   @DevSebastian
+/frontend/src/i18n/                                                    @DevSebastian
+
+# ══════════════════════════════════════════════════════════════════════════════
+# FELIPE — Auth + DevOps (Backend + Frontend)
+# ══════════════════════════════════════════════════════════════════════════════
+/backend/src/main/java/com/ashencrown/AshenCrownApplication.java      @DevFelipe
+/backend/src/main/java/com/ashencrown/config/                         @DevFelipe
+/backend/src/main/java/com/ashencrown/controller/AuthController.java  @DevFelipe
+/backend/src/main/java/com/ashencrown/service/AuthService.java        @DevFelipe
+/backend/src/main/java/com/ashencrown/model/User.java                 @DevFelipe
+/backend/src/main/java/com/ashencrown/repository/                     @DevFelipe
+/backend/src/main/java/com/ashencrown/dto/AuthResponseDto.java        @DevFelipe
+/backend/src/main/java/com/ashencrown/dto/LoginRequestDto.java        @DevFelipe
+/backend/src/main/java/com/ashencrown/dto/RegisterRequestDto.java     @DevFelipe
+/backend/src/main/java/com/ashencrown/dto/LanguageRequestDto.java     @DevFelipe
+/backend/src/main/resources/                                          @DevFelipe
+/backend/src/test/                                                    @DevFelipe
+/frontend/src/main.ts                                                 @DevFelipe
+/frontend/src/vite-env.d.ts                                           @DevFelipe
+/frontend/src/services/AuthService.ts                                 @DevFelipe
+/frontend/src/pages/LoginPage.ts                                      @DevFelipe
+/frontend/src/pages/RegisterPage.ts                                   @DevFelipe
+/frontend/src/styles/auth.css                                         @DevFelipe
